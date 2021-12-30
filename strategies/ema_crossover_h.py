@@ -21,6 +21,7 @@ def apply_rule(data, ema_periods):
 def ema_crossover_h():
     ema_periods = [8, 16, 24, 36, 50]
     selected_symbols = []
+
     for symbol in symbols:
         data = load_h_data(symbol)
         data = apply_techincals(data, ema_periods)
