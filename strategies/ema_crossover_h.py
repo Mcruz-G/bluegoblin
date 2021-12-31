@@ -1,4 +1,4 @@
-import random
+import numpy as np 
 from .utils import load_h_data, symbols
 
 def apply_emas(ema_periods, data):
@@ -13,8 +13,8 @@ def apply_techincals(data, ema_periods):
 def apply_rule(data, ema_periods):
     data["RULE"] = True
     for period in ema_periods:
-        data["RULE"] = data["RULE"] * data["EMA_50"] <= data[f"EMA_{period}"]
-        data["RULE"] = data["RULE"] * data["EMA_8"] >= data[f"EMA_{period}"]
+        data["RULE"] = np.logical_and(data["RULE"], data["EMA_50"] <= data[f"EMA_{period}"])
+        data["RULE"] = np.logical_and(data["RULE"], data["EMA_8"] >= data[f"EMA_{period}"])
     rule = data.RULE.iloc[-1]
     return rule
 
@@ -31,4 +31,4 @@ def ema_crossover_h():
     return selected_symbols
 
 if __name__ == "__main__":
-    print(ema_crossover_h())
+    ema_crossover_h()
