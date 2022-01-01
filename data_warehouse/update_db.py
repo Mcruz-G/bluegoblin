@@ -41,7 +41,7 @@ def update_db(resolution):
 
         elif res == "m":
             mins = time_diff.seconds // 60
-            if mins > 0:
+            if mins > 15:
                 print(f"Loading new {symbol} data to {db_name}")
                 populate_db(engine, client, [symbol], lookback="1", resolution=resolution)
             else:

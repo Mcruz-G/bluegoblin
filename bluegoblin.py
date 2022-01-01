@@ -1,30 +1,30 @@
 import streamlit as st
+import pandas as pd
 from data_warehouse.data_warehouse import update_data
-from data_warehouse.update_db import update_db
-from strategies.ema_crossover_h import ema_crossover_h
-from strategies.macd_crossover_h import macd_crossover_h
-
-def on_click_ema():
-    ema_crossover_cryptos = ema_crossover_h()
-    st.write("EMA Crossover strategic selection:")
-    for symbol in ema_crossover_cryptos:
-        st.write(symbol)
-
-def on_click_macd():
-    macd_crossover_cryptos = macd_crossover_h()
-    st.write("MACD Crossover strategic selection:")
-    for symbol in macd_crossover_cryptos:
-        st.write(symbol)
+from webapp.buttons import build_everyone_op_button, build_close_to_support_button, build_close_to_resistance_button, build_high_check_button, build_low_check_button
+from webapp.multiselect import build_multiselect
 
 
 if __name__ == "__main__":
-    update_db("1h")
-    st.title("Welcome to BlueGoblin, Ailyn. It is good to see you again.")
-    ema_button  = st.button("Get EMA Crossover")
-    macd_button = st.button("Get MACD Crossover")
 
-    if ema_button:
-        on_click_ema()
+    st.title("Welcome to BlueGoblin, Ailyn. It is good to see you again.")
+    st.header("Pick a strategy and look at the crypto signals or select many strategies to get the interception of their signals...")
     
-    if macd_button:
-        on_click_macd()
+    build_multiselect()
+
+    st.subheader("")
+    st.subheader("")
+    st.subheader("")
+    st.subheader("")
+    st.header("Or do some quick analytics on our crypto universe with just a click.")
+    
+    build_everyone_op_button()
+    build_close_to_support_button()
+    build_close_to_resistance_button()
+    build_high_check_button()
+    build_low_check_button()
+
+
+    st.subheader("... Talk to our admin if you'd like to add any functionality :)")
+    
+    update_data()
