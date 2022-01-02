@@ -1,7 +1,7 @@
 import os, sys
 import pandas as pd
 import streamlit as st
-from .utils import build_crypto_signal_display, build_high_check_display, build_support_display, build_resistance_display
+from .utils import build_crypto_signal_display, build_high_check_display, build_low_check_display, build_support_display, build_resistance_display
 
 bg_path = os.environ["BG_PATH"]
 strats_path = f"{bg_path}strategies/"
