@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import date, datetime
 from binance.client import Client
 from sqlalchemy import create_engine
-from .populate_db import populate_db
+from populate_db import populate_db
 
 def check_last_date(symbol, engine):
     data = pd.read_sql(symbol, engine)
