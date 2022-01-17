@@ -43,7 +43,7 @@ def update_db(resolution):
         elif res == "m":
             mins = time_diff.seconds // 60
             lookback = math.ceil(time_diff.seconds / (60 * 60 * 24))
-            if mins > 15:
+            if mins > 3:
                 print(f"Loading new {symbol} data to {db_name}")
                 populate_db(engine, client, [symbol], lookback=f"{lookback}", resolution=resolution)
             else:
